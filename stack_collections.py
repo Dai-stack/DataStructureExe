@@ -18,3 +18,5 @@ print(st)
 
 print("pop ->", st.pop())
 print(st)
+
+print(dir(st))
