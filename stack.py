@@ -1,4 +1,4 @@
-# stack
+# stack リストで実装
 st = []
 
 st.append(300)
@@ -14,6 +14,7 @@ print("pop ->", st.pop())
 
 print(st)
 
-print("pop ->", st.pop(0))
+print("pop ->", st.pop())
 
 print(st)
+print(dir(st))
