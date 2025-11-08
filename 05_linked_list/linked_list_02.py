@@ -21,7 +21,6 @@ class LinkedList:
         node = Node(key)
         # 新ノードのリンクはこれまで先頭にあったノードへリンクさせる
         node.ref_next = self.head
-        # Headのリンクを新しいノードに
         self.head = node
 
     # 末尾へのノード挿入
@@ -41,6 +40,78 @@ class LinkedList:
             last = last.ref_next
 
         last.ref_next = node
+
+    # 中間へのノード挿入
+    def insert_mid(self, pos, key):
+        index = 0
+        curr = self.head
+
+        while index < (pos - 1) and curr is not None:
+            index += 1
+            curr = curr.ref_next
+
+        if pos == 0:
+            new_node = Node(key)
+            new_node.ref_next = curr
+            self.head = new_node
+
+        else:
+            new_node = Node(key)
+            new_node.ref_next = curr.ref_next
+            curr.ref_next = new_node
+
+    # 先頭ノード削除
+    def delete_head(self):
+        if self.head is None:
+            print("This LinkedList is empty")
+
+        node = self.head
+        self.head = self.head.ref_next
+        print("削除した先頭ノードのキー: ", node.key)
+        return node.key
+
+    # 末尾ノード削除
+    def delete_tail(self):
+        if self.head is None:
+            print("This LinkedList is empty")
+            return None
+
+        curr = self.head
+        prev = None
+
+        # 最後尾のノードまでたどり，その参照をきる
+        while curr.ref_next is not None:
+            prev = curr
+            curr = curr.ref_next
+        prev.ref_next = None
+        print("削除した最後尾ノードのキー: ", curr.key)
+        return curr.key
+
+    # 中間ノードの削除
+    def delete_mid(self, pos):
+        if self.head is None:
+            print("This LinkedList is empty")
+            return None
+
+        curr = self.head
+        prev = None
+        index = 0
+
+        while curr.ref_next is not None and index < pos:
+            prev = curr
+            curr = curr.ref_next
+            index += 1
+
+        if curr == self.head:
+            self.head = curr.ref_next
+            mid_key = curr.key
+
+        else:
+            prev.ref_next = curr.ref_next
+            mid_key = curr.key
+
+        print(f"削除した中間ノードのポジション: {pos}, キー: {curr.key}")
+        return curr.key
 
 
 node1 = Node(30)
@@ -62,5 +133,21 @@ ll.insert_head(90)
 ll.display()
 
 ll.isnert_tail(60)
+
+ll.display()
+
+ll.insert_mid(3, 55)
+
+ll.display()
+
+ll.delete_head()
+
+ll.display()
+
+ll.delete_tail()
+
+ll.display()
+
+ll.delete_mid(3)
 
 ll.display()
