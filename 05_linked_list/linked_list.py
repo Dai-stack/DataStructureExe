@@ -16,6 +16,35 @@ class LinkedList:
             curr = curr.ref_next
         print("")
 
+    # ノードの値(key)をリストで返す
+    def key_list(self):
+        curr = self.head
+        list = []
+        while curr is not None:
+            list.append(curr.key)
+            curr = curr.ref_next
+        return list
+
+    # ノードの数を返す
+    def count_nodes(self):
+        curr = self.head
+        count = 0
+        while curr is not None:
+            curr = curr.ref_next
+            count += 1
+        return count
+
+    # ノードのキーを置換 -> 置換数を返す
+    def replace(self, old_key, new_key):
+        curr = self.head
+        count = 0
+        while curr is not None:
+            if curr.key == old_key:
+                curr.key = new_key
+                count += 1
+            curr = curr.ref_next
+        return count
+
     # 先頭へのノード挿入
     def insert_head(self, key):
         node = Node(key)
@@ -150,5 +179,13 @@ if __name__ == "__main__":
     ll.display()
 
     ll.delete_mid(3)
+
+    ll.display()
+
+    print(ll.count_nodes())
+
+    print(ll.key_list())
+
+    print(ll.replace(55, 50))
 
     ll.display()
