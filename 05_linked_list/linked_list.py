@@ -53,7 +53,7 @@ class LinkedList:
         self.head = node
 
     # 末尾へのノード挿入
-    def isnert_tail(self, key):
+    def insert_tail(self, key):
         node = Node(key)
 
         # リストが空の場合
@@ -162,7 +162,7 @@ if __name__ == "__main__":
 
     ll.display()
 
-    ll.isnert_tail(60)
+    ll.insert_tail(60)
 
     ll.display()
 
