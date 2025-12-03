@@ -40,3 +40,9 @@ print("最小ノード値:", bst.find_min_node(root))
 
 print("\n")
 print("最大ノード値:", bst.find_max_node(root))
+
+print("\n")
+print("ノード数:", bst.find_tree_size(root))
+
+print("\n")
+print("ツリーの高さ:", bst.find_height(root))
