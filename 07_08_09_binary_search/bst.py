@@ -10,8 +10,8 @@ class BST:
     def __init__(self):
         self.root = None
 
+    # データ登録
     def insert(self, key):
-        """insert a key into a bst"""
         node = Node(key)
         if self.root is None:
             self.root = node
@@ -154,7 +154,6 @@ class BST:
 
     # 削除（呼び出し用）
     def delete(self, key):
-        """delete a key from a bst"""
         parent, node = self.find_parent_node(key)
 
         if parent is None and node is None:
@@ -171,7 +170,6 @@ class BST:
 
     # 削除（子ノードが無いノードを削除する）
     def delete_node_0(self, parent, node):
-        """n_child_node == 0"""
         if parent:
             if parent.right is node:
                 parent.right = None
@@ -182,7 +180,6 @@ class BST:
 
     # 削除（子ノードが1つであるノードを削除する）
     def delete_node_1(self, parent, node):
-        """n_child_node == 1"""
         next_node = None
         if node.left:
             next_node = node.left
@@ -199,7 +196,6 @@ class BST:
 
     # 削除（子ノードが2つであるノードを削除する）
     def delete_node_2(self, node):
-        """n_child_node == 2"""
         parent_lm_node = node
         lm_node = node.right
         while lm_node.left:
